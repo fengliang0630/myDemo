@@ -1,1 +1,12 @@
-<div>我的Angular2Demo</div>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <app-search-form></app-search-form>
+      </div>
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>
