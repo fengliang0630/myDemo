@@ -14,6 +14,11 @@ export class ProductComponent implements OnInit {
 
   constructor(private sus: ServiceUtilService) {
     this.products = sus.getAllProducts();
+    this.sus.searchEvent.subscribe(
+      (searchParams) => {
+        this.products = this.sus.searchHandle(searchParams);
+      }
+      );
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {validNumber} from '../validators/validator';
 import {ServiceUtilService} from '../shared/service-util.service';
@@ -25,7 +25,7 @@ export class SearchFormComponent{
   onSubmit() {
     let valid: boolean = this.formModel.valid;
     if (valid) {
-      console.log(this.formModel.value);
+      this.sus.searchEvent.emit(this.formModel.value);
     }
   }
 
