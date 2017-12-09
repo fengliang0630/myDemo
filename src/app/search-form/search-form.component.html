@@ -1,0 +1,28 @@
+<form [formGroup]="formModel" rolw="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="productName">商品名称:</label>
+    <input formControlName="productName" id="productName" class="form-control">
+    <div [hidden]="this.formModel.get('productName').untouched || this.formModel.get('productName').valid">
+      <span [hidden]="!this.formModel.get('productName').getError('required')">必填项</span>
+      <span [hidden]="!this.formModel.get('productName').getError('minlength')">最少出入两个长度的查询条件</span>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label for="productPrice">商品价格:</label>
+    <input formControlName="productPrice" id="productPrice" class="form-control">
+    <div [hidden]="this.formModel.get('productPrice').untouched || this.formModel.get('productPrice').valid">
+      <span [hidden]="!this.formModel.get('productPrice').getError('number')">输入项必须为正整数</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="productCategory">商品类别:</label>
+    <select class="form-control" formControlName="productCategory" id="productCategory">
+      <option [value]="-1">全部类型</option>
+      <option *ngFor="let pc of productCategorys" [value]="pc">{{pc}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary btn-block">搜索</button>
+  </div>
+</form>
