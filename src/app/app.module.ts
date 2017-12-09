@@ -13,9 +13,11 @@ import {RouterModule, Routes} from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './stars/stars.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routeConfig: Routes = [
-  {path: '', component: ShowContentComponent, pathMatch: 'full'}
+  {path: '', component: ShowContentComponent, pathMatch: 'full'},
+  {path: 'product/:productId', component: ProductDetailComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const routeConfig: Routes = [
     ShowContentComponent,
     CarouselComponent,
     ProductComponent,
-    StarsComponent
+    StarsComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
