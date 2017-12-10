@@ -14,6 +14,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './stars/stars.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CommentsComponent } from './comments/comments.component';
 
 const routeConfig: Routes = [
   {path: '', component: ShowContentComponent, pathMatch: 'full'},
@@ -30,7 +31,8 @@ const routeConfig: Routes = [
     CarouselComponent,
     ProductComponent,
     StarsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
