@@ -7,10 +7,12 @@
       <p>{{product.desc}}</p>
     </div>
   </div>
-
   <div >
+    <p class="pull-right">{{commentLength}}</p>
     <p>
       <app-stars [rating]="product.rating"></app-stars>
     </p>
   </div>
+
+  <app-comments [productId]="product.id" (productRatingChange)="productRatingChangeHandler($event)"></app-comments>
 </div>
