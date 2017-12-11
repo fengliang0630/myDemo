@@ -15,10 +15,17 @@ import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './stars/stars.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CommentsComponent } from './comments/comments.component';
+import {CanActivateGuard} from './guard/canActivate_guard';
+import {CanDeactivateGuard} from './guard/canDeactivate_guard';
+import {ResolveGuard} from './guard/Resolve_guard';
 
 const routeConfig: Routes = [
-  {path: '', component: ShowContentComponent, pathMatch: 'full'},
-  {path: 'product/:productId', component: ProductDetailComponent, pathMatch: 'full'},
+  {path: '', component: ShowContentComponent, pathMatch: 'full',
+    canActivate: [CanActivateGuard] , canDeactivate: [CanDeactivateGuard]},
+  {path: 'product/:productId', component: ProductDetailComponent, pathMatch: 'full',
+    resolve: {
+      productObj: ResolveGuard
+    }},
 ];
 
 @NgModule({
@@ -40,7 +47,7 @@ const routeConfig: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routeConfig)
   ],
-  providers: [ServiceUtilService],
+  providers: [ServiceUtilService, CanActivateGuard, CanDeactivateGuard, ResolveGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,9 +17,19 @@ export class ProductDetailComponent {
 
   constructor(private routeInfo: ActivatedRoute, private sus: ServiceUtilService) {
     this.imageURL = '../../assets/image/2.png';
+    /**利用ResolveGuard来查询项产品数据*/
+    this.routeInfo.data.subscribe(
+      (data: {productObj: Product}) => {
+        this.productId = data.productObj.id;
+        this.product = data.productObj;
+        this.commentLength = this.sus.getCommentsLengthByProductId(data.productObj.id);
+      }
+    );
+    /*
     this.productId = this.routeInfo.snapshot.params['productId'];
     this.product = this.sus.getProductById(this.productId);
     this.commentLength = this.sus.getCommentsLengthByProductId(this.productId);
+    */
   }
 
   productRatingChangeHandler(comments: Comment[]) {
